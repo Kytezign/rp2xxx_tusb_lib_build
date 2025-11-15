@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "compare": "cpp",
+        "cstdint": "cpp",
+        "chrono": "c",
+        "functional": "c",
+        "cstdlib": "c"
+    }
+}

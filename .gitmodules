@@ -1,0 +1,3 @@
+[submodule "microzig"]
+	path = microzig
+	url = https://github.com/Kytezign/microzig.git

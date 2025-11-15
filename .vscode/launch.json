@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "command": "clear; zig build runtest",
+            "name": "build runtest",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "command": "clear; zig build dis",
+            "name": "build dis",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "command": "clear; zig build load",
+            "name": "build load",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+
+    ]
+}

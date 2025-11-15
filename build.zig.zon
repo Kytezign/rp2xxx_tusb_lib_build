@@ -1,0 +1,31 @@
+.{
+    .name = .zig_example,
+    .version = "0.1.0",
+    .fingerprint = 0x1d7cddc7fdd947b5, // Changing this has security and trust implications?
+    .minimum_zig_version = "0.15.1",
+    .dependencies = .{
+        .microzig = .{
+            .path = "microzig",
+            .lazy = false,
+        },
+        .linux_picotool = .{
+            .url = "https://github.com/raspberrypi/pico-sdk-tools/releases/download/v2.2.0-3/picotool-2.2.0-a4-x86_64-lin.tar.gz",
+            .sha256 = "f4a6784fbb862520b797bfb3302c5b94f47664692d85d03c0a7fbee98065568d",
+            .hash = "N-V-__8AAO5NLACzo7YUdV_usxXNMx6JMw6lgasppVamaP9b",
+            .lazy = true,
+        },
+        .serial = .{
+            .url = "git+https://github.com/ZigEmbeddedGroup/serial.git#fbd7389ff8bbc9fa362aa74081588755b5d028a0",
+            .hash = "serial-0.0.1-PoeRzF60AAAN8Iu0yXTIX-t3DVzsnmN7vWHKM2HA2Zbq",
+            .lazy = true,
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        // For example...
+        //"LICENSE",
+        "README.md",
+    },
+}
