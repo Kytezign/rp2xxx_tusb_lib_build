@@ -38,7 +38,6 @@ pub fn build(b: *std.Build) !void {
         firmware,
         &csources,
         &includes,
-        "/usr/arm-none-eabi/include/",
     );
 
     // Setting options for the device
