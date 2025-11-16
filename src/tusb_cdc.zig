@@ -48,6 +48,7 @@ pub fn main() !void {
         .clock_config = rp2xxx.clock_config,
     });
     rp2xxx.uart.init_logger(uart);
+    // TODO: this seems like the old way to initialize.
     _ = tinyusb.tud_init(0);
     // std.log.info("USB DONE state: {}", .{peripherals.RESETS.RESET_DONE.read().USBCTRL});
     // std.log.info("USB Reset state: {}", .{peripherals.RESETS.RESET.read().USBCTRL});

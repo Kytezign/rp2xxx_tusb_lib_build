@@ -33,7 +33,13 @@ pub fn build(b: *std.Build) !void {
     const csources = [_]std.Build.LazyPath{b.path("src/tusb_descriptors.c")};
     const includes = [_]std.Build.LazyPath{b.path("src")};
 
-    MicroBuild.addTinyUsbLib(b, firmware, &csources, &includes);
+    MicroBuild.addTinyUsbLib(
+        b,
+        firmware,
+        &csources,
+        &includes,
+        "/usr/arm-none-eabi/include/",
+    );
 
     // Setting options for the device
     // using this magic command, make sure both the host exe and the device share the same code.
