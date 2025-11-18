@@ -23,29 +23,49 @@
  *
  */
 
-#ifndef _TUSB_CONFIG_H_
-#define _TUSB_CONFIG_H_
+#ifndef TUSB_CONFIG_H_
+#define TUSB_CONFIG_H_
 
 #ifdef __cplusplus
  extern "C" {
 #endif
 
+//--------------------------------------------------------------------+
+// Board Specific Configuration
+//--------------------------------------------------------------------+
+
+// RHPort number used for device can be defined by board.mk, default to port 0
+#ifndef BOARD_TUD_RHPORT
+#define BOARD_TUD_RHPORT      0
+#endif
 
 // RHPort max operational speed can defined by board.mk
 #ifndef BOARD_TUD_MAX_SPEED
+#define BOARD_TUD_MAX_SPEED   OPT_MODE_DEFAULT_SPEED
 #endif
 
 //--------------------------------------------------------------------
 // Common Configuration
 //--------------------------------------------------------------------
-#define CFG_TUSB_DEBUG_PRINTF printf_
-#define CFG_TUSB_DEBUG 3
+
+// defined by compiler flags for flexibility
+#ifndef CFG_TUSB_MCU
+#error CFG_TUSB_MCU must be defined
+#endif
+
+#ifndef CFG_TUSB_OS
+#define CFG_TUSB_OS           OPT_OS_NONE
+#endif
+
+#ifndef CFG_TUSB_DEBUG
+#define CFG_TUSB_DEBUG        0
+#endif
 
 // Enable Device stack
 #define CFG_TUD_ENABLED       1
 
 // Default is max speed that hardware controller could support with on-chip PHY
-#define CFG_TUD_MAX_SPEED     OPT_MODE_DEFAULT_SPEED
+#define CFG_TUD_MAX_SPEED     BOARD_TUD_MAX_SPEED
 
 /* USB DMA on some MCUs can only access a specific SRAM region with restriction on alignment.
  * Tinyusb use follows macros to declare transferring memory so that they can be put
@@ -72,7 +92,7 @@
 
 //------------- CLASS -------------//
 #define CFG_TUD_CDC              1
-#define CFG_TUD_MSC              0
+#define CFG_TUD_MSC              1
 #define CFG_TUD_HID              0
 #define CFG_TUD_MIDI             0
 #define CFG_TUD_VENDOR           0
@@ -87,10 +107,10 @@
 #define CFG_TUD_CDC_EP_BUFSIZE   (TUD_OPT_HIGH_SPEED ? 512 : 64)
 
 // MSC Buffer size of Device Mass storage
-// #define CFG_TUD_MSC_EP_BUFSIZE   512
+#define CFG_TUD_MSC_EP_BUFSIZE   512
 
 #ifdef __cplusplus
  }
 #endif
 
-#endif /* _TUSB_CONFIG_H_ */
+#endif /* TUSB_CONFIG_H_ */

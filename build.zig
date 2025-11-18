@@ -25,12 +25,15 @@ pub fn build(b: *std.Build) !void {
     const firmware = mb.add_firmware(.{
         .name = name,
         .target = target,
-        .optimize = .ReleaseSafe,
+        .optimize = .ReleaseSmall,
         .root_source_file = b.path("src/tusb_cdc.zig"),
     });
 
     // Adding tinyusb required files
-    const csources = [_]std.Build.LazyPath{b.path("src/tusb_descriptors.c")};
+    const csources = [_]std.Build.LazyPath{
+        b.path("src/tusb_descriptors.c"),
+        b.path("src/msc_disk.c"),
+    };
     const includes = [_]std.Build.LazyPath{b.path("src")};
 
     MicroBuild.addTinyUsbLib(
