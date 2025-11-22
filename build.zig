@@ -41,6 +41,7 @@ pub fn build(b: *std.Build) !void {
         firmware,
         &csources,
         &includes,
+        true,
     );
 
     // Setting options for the device
