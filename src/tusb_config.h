@@ -29,6 +29,8 @@
 #ifdef __cplusplus
  extern "C" {
 #endif
+#define CFG_TUSB_DEBUG        2
+
 
 //--------------------------------------------------------------------+
 // Board Specific Configuration
